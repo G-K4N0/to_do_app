@@ -1,0 +1,109 @@
+html{
+  background: #ddd;
+  height: 100%;
+  display: flex;
+}
+
+body{
+  width: 100%;
+  margin: auto;
+}
+
+.App{
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+}
+
+.form-todo-list{
+  margin-top: 20px;
+}
+
+.todo-list{
+  border-radius: 15px;
+  background: #fff;
+  font-size: 18px;
+  max-width: 300px;
+  margin: auto;
+  margin-bottom: 24px;
+  padding: 8px 16px;
+  box-shadow: 0 5px 30px rgba($color: #000000, $alpha: 0.2);
+}
+
+$colorNaranja: #fb8b00;
+$colorHover:#0b0250;
+
+@mixin button($class,$color,$colorHover) {
+  .button.#{$class}{background: $color;}
+  .button.#{$class}:hover{background: $colorHover;}  
+  .button.#{$class}:active{background: $color;}
+}
+.button{
+  outline: none;
+  color: #fff;
+  border: solid white;
+  border-radius: 15px;
+  padding: 8px;
+}
+@include button('naranja',$colorNaranja,$colorHover);
+
+.file-input{
+  padding: 4px;
+}
+
+.file-input > .text {
+
+  border: none;
+  border-radius: 2px;
+  border-bottom: solid rgba($color: #ff7b00, $alpha: 1.0);
+  border-left: solid rgba($color: #ff7b00, $alpha: 1.0) ;
+  outline: none;
+  padding: 0px, 10px;
+  font-size: 18px;
+  width: 200px;
+  height: 20px;
+  background: transparent;
+}
+
+$duracion :0.4s;
+$stroke:#34eb9f;
+$colorText:#222222;
+$colorChecked:red;
+
+.todo {
+  display: block;
+  position: relative;
+  padding: 1em 1em 1em 16%;
+  margin: 0 auto;
+  cursor: pointer;
+  border-bottom: solid 1px rgba($color: #0b003da4, $alpha: 0.6);
+  &:last-child{
+    border-bottom: none;
+  }
+}
+
+/*animaciones*/
+.todo.new-item{
+  opacity: 0;
+  transform:translateX(100px);
+  animation: fadeIn .5s linear forwards;
+}
+
+@keyframes fadeIn {
+  to{
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+
+.todo_state{
+  position: absolute;
+  top: 25%;
+  left: 0;
+  opacity: 1;
+}
+
+.todo_text{
+  color: $colorText;
+  text-align: right;
+
+}
